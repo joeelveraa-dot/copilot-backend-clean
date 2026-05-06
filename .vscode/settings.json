@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b3d4dc4c-3aa1-4a9e-812f-d1105c924ab2/resourceGroups/rg-fae-prod-openai/providers/Microsoft.Web/sites/copilot-fae",
+    "appService.deploySubpath": "."
+}

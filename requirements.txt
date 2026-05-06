@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+gunicorn
+python-dotenv
+openai
+pdfplumber
+python-docx
+requests
+pydantic
+redis
+openpyxl
+msal
+pyodbc
+python-multipart
+pandas
+setuptools
+wheel
