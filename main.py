@@ -873,6 +873,18 @@ async def reindex_sharepoint():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://salmon-rock-07d574203.7.azurestaticapps.net",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.get("/")
 def root():
     return {"status": "ok"}
