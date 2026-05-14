@@ -824,7 +824,16 @@ Previous output to fix:
 # App FastAPI
 # =============================================================================
 
-app = FastAPI(title="FAE Copilot API", version="1.2.0")
+app = FastAPI(
+    title="FAE Copilot API",
+    version="1.2.0",
+    servers=[
+        {
+            "url": "https://copilot-fae-c0d4huf8hsd7ghbt.westeurope-01.azurewebsites.net",
+            "description": "Production"
+        }
+    ]
+)
 
 app.add_middleware(
     CORSMiddleware,
