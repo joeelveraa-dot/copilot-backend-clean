@@ -56,7 +56,7 @@ def get_sql_connection():
     if not all([SQL_SERVER, SQL_DB, SQL_USER, SQL_PASSWORD]):
         raise RuntimeError("Faltan variables de entorno SQL_SERVER, SQL_DB, SQL_USER, SQL_PASSWORD")
     return pyodbc.connect(
-        "DRIVER={SQL Server Native Client 11.0};"
+        "DRIVER={ODBC Driver 18 for SQL Server};"
         f"SERVER={SQL_SERVER};"
         f"DATABASE={SQL_DB};"
         f"UID={SQL_USER};"
