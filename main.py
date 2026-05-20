@@ -56,7 +56,7 @@ def get_sql_connection():
     if not all([SQL_SERVER, SQL_DB, SQL_USER, SQL_PASSWORD]):
         raise RuntimeError("Faltan variables de entorno SQL_SERVER, SQL_DB, SQL_USER, SQL_PASSWORD")
     return pyodbc.connect(
-        "DRIVER={ODBC Driver 18 for SQL Server};"
+        "DRIVER={SQL Server Native Client 11.0};"
         f"SERVER={SQL_SERVER};"
         f"DATABASE={SQL_DB};"
         f"UID={SQL_USER};"
@@ -829,8 +829,8 @@ app = FastAPI(
     version="1.2.0",
     servers=[
         {
-            "url": "https://copilot-fae-c0d4huf8hsd7ghbt.westeurope-01.azurewebsites.net",
-            "description": "Production"
+            "url": "http://localhost:8000",
+            "description": "Local VM"
         }
     ]
 )
@@ -1158,7 +1158,11 @@ SKILLS["sharepoint.find_document"] = skill_sharepoint_find_document
 # =========================================================
 # CHAT GENERAL (Azure OpenAI REAL + CONTEXTO AUTOMÁTICO)
 # =========================================================
-@app.post("/chat")
+class ChatResponse(BaseModel):
+    response: str
+
+
+@app.post("/chat", response_model=ChatResponse)
 async def chat(
     message: str = Form(...),
     mode: str = Form("chat"),
